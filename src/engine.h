@@ -50,9 +50,15 @@ private:
         return 0;
     }
     
-    RC virus_propagation_in_a_building  (Building* obj);
-    RC population_movement              (Building* from, Building* to);
-    RC vaccine_developement_progress    ();
+    RC virus_propagation_in_a_building  (Building* obj) {
+        obj->virus_propagation_in_a_building();
+    }
+    RC population_movement              (Building* from, Building* to) {
+        from->population_movement(to);
+    }
+    RC vaccine_developement_progress    () {
+        vaccine->developement_progress();
+    }
     RC wait_for_next_step               ();
     
     
