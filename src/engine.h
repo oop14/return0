@@ -69,8 +69,8 @@ public:
     Vaccine*                vaccine;
     Statistics*             stat;
     
-    double speed_of_game;
-    int num_buildings;
+    double	speed_of_game;
+    int		num_buildings;
 };
 
 #endif /* defined(__OOP_proj__engine__) */
