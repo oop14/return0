@@ -2,7 +2,6 @@
 #include <string.h>
 #include "virus.h"
 
-//void intcpy(int* dest, char* src) {
 	for(int i=0; src[i]!=NULL; i++)
 		dest[i] = src[i] - '0';
 }
@@ -41,71 +40,73 @@ void Virus::setTech(int difficulty, int cost_buf, double vac_buf, double stat_bu
 		costArr[i] = new int[techNum[i]];
 		statArr[i] = new VirusStatus[techNum[i]];
 	}
-
+	status[0]->setName("Spread","감염 속도 높이는 기술들");
+	status[1]->setName("Attack","컴퓨터 파괴 속도 높이는 기술들");
+	status[2]->setName("Hiding","백신으로부터 숨는 기술들");
 
 	boolcpy(indexArr[0][0],"00000"); strcpy(nameArr[0][0],"Internet");
 	strcpy(infoArr[0][0],"Online 감염");
-	cost[0][0] = 3; statArr[0][0].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[0][0] = 3; statArr[0][0].setInfo(2,2,0,0,0,0,0,1,0);
 
 	boolcpy(indexArr[0][1],"10000"); strcpy(nameArr[0][1],"P2P/웹하드");
 	strcpy(infoArr[0][1],"Online 감염++");
-	cost[0][1] = 7; statArr[0][1].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[0][1] = 7; statArr[0][1].setInfo(7,7,0,0,0,0,0,5,0);
 
 	boolcpy(indexArr[0][2],"00000"); strcpy(nameArr[0][2],"HDD/SSD");
 	strcpy(infoArr[0][2],"Offline 감염");
-	cost[0][2] = 4; statArr[0][2].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[0][2] = 4; statArr[0][2].setInfo(3,0,3,0,0,0,0,1,0);
 
 	boolcpy(indexArr[0][3],"00000"); strcpy(nameArr[0][3],"USB/SD/CD/DVD");
 	strcpy(infoArr[0][3],"Offline 감염");
-	cost[0][3] = 2; statArr[0][3].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[0][3] = 2; statArr[0][3].setInfo(3,0,3,0,0,0,0,3,0);
 	
 	boolcpy(indexArr[0][4],"00110"); strcpy(nameArr[0][4],"Plug");
 	strcpy(infoArr[0][4],"Offline 감염++");
-	cost[0][4] = 10; statArr[0][4].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[0][4] = 10; statArr[0][4].setInfo(1,1,1,1,0,0,0,0,0);
 
 
 
 	boolcpy(indexArr[1][0],"0000"); strcpy(nameArr[1][0],"Copy");
 	strcpy(infoArr[1][0],"Ctrl + C, Ctrl + V");
-	cost[1][0] = 3; statArr[1][0].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[1][0] = 3; statArr[1][0].setInfo(1,1,0,0,3,0,0,3,0);
 
 	boolcpy(indexArr[1][1],"0000"); strcpy(nameArr[1][1],"Overload");
 	strcpy(infoArr[1][1],"과부하");
-	cost[1][1] = 3; statArr[1][1].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[1][1] = 5; statArr[1][1].setInfo(0,0,0,0,3,2,0,7,0);
 
 	boolcpy(indexArr[1][2],"0000"); strcpy(nameArr[1][2],"Modify");
 	strcpy(infoArr[1][2],"변조");
-	cost[1][2] = 3; statArr[1][2].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[1][2] = 5; statArr[1][2].setInfo(0,0,0,0,2,0,0,0,0);
 
 	boolcpy(indexArr[1][3],"0000"); strcpy(nameArr[1][3],"Delete");
 	strcpy(infoArr[1][3],"지우기");
-	cost[1][3] = 3; statArr[1][3].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[1][3] = 3; statArr[1][3].setInfo(0,0,0,0,3,2,1,30,0);
 
 
 
 	boolcpy(indexArr[2][0],"000000"); strcpy(nameArr[2][0],"Hiding");
 	strcpy(infoArr[2][0],"숨기기");
-	cost[2][0] = 2; statArr[2][0].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[2][0] = 2; statArr[2][0].setInfo(0,0,0,0,0,0,0,0,1);
 
 	boolcpy(indexArr[2][1],"100000"); strcpy(nameArr[2][1],"BackDoor");
 	strcpy(infoArr[2][1],"마스터이?!");
-	cost[2][1] = 3; statArr[2][1].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[2][1] = 3; statArr[2][1].setInfo(0,0,0,0,0,0,0,0,2);
 
 	boolcpy(indexArr[2][2],"110000"); strcpy(nameArr[2][2],"RootKit");
 	strcpy(infoArr[2][2],"툴바?!");
-	cost[2][2] = 5; statArr[2][2].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[2][2] = 5; statArr[2][2].setInfo(0,0,0,0,0,0,0,0,3);
 
 	boolcpy(indexArr[2][3],"100000"); strcpy(nameArr[2][3],"Worm(Dummy)");
 	strcpy(infoArr[2][3],"가짜 인형 생성?!");
-	cost[2][3] = 2; statArr[2][3].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[2][3] = 5; statArr[2][3].setInfo(1,1,0,0,0,0,0,0,2);
 
 	boolcpy(indexArr[2][4],"100000"); strcpy(nameArr[2][4],"Trojan horse");
 	strcpy(infoArr[2][4],"아닌 듯 숨어들어갔다가 나오기");
-	cost[2][4] = 4; statArr[2][4].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[2][4] = 4; statArr[2][4].setInfo(1,1,0,0,0,0,0,1,2);
 
 	boolcpy(indexArr[2][5],"110110"); strcpy(nameArr[2][5],"Vaccine Disabler");
 	strcpy(infoArr[2][5],"백신 내성");
-	cost[2][5] = 7; statArr[2][5].setInfo(1,2,3,4,5,6,7,8,9);
+	cost[2][5] = 7; statArr[2][5].setInfo(0,0,0,0,0,0,0,0,5);
 
 
 

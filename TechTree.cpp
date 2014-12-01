@@ -78,6 +78,20 @@ void TechTree::getCost(int index, int& cost) {
 	tree[index].getCost(cost);
 	cost += upgradeNum;
 }
+void TechTree::setName(const char* _name, const char* _info) {
+	for(int i=0;i<20; i++) {
+		name[i] = _name[i];
+		if( _name[i] == NULL )
+			break;
+	}
+	name[20]=NULL;
+	for(int i=0;i<40; i++) {
+		info[i] = _info[i];
+		if( _info[i] == NULL )
+			break;
+	}
+	info[40]=NULL;
+}
 void TechTree::upgradeVirus(int index, VirusStatus& Vstatus) {
 	if(available[i]) {
 		tree[i].upgrade(Vstatus);

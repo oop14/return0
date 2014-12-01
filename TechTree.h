@@ -41,8 +41,10 @@ public:
 class TechTree {
 private:
 	const int techNum;
-	TechBlock** tree;
+	char name[21];
+	char info[41];
 	int levelMax;
+	TechBlock** tree;
 	static int upgradeNum;
 public:
 	TechTree(const int _techNum):techNum(_techNum) {
@@ -52,6 +54,7 @@ public:
 	~TechTree() {
 		delete[]tree;
 	}
+	void setName(const char* _name, const char* _info);
 	void setMaxLevel(int& _levelMax) { levelMax = _levelMax; };
 	void setStruct(const char** nameArr, const char** infoArr,
 				const int* costArr,	const bool** indexArr, const VirusStatus* statArr);
