@@ -22,6 +22,7 @@ public:
 	Virus();
 	~Virus();
 	void setDifficulty(int _difficulty, int _sinario);
+
 	void getVirusStatus const(VirusStatus* _Vstatus);
 	void getTechTree const(int index, TechTree* _tree);
 };

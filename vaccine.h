@@ -13,10 +13,9 @@ class Virus;
 
 class Vaccine {
 private:
-	VirusStatus* Vstatus;
 	Building** pBuilding;
-	double developing_point;
-	double develop_speed;
+	double current_developed_point;
+	double developing_speed;
 public:
 	Vaccine(Virus* _virus, Building** _pBuilding) {
 		_virus->getVirusStatus(Vstatus);
@@ -24,8 +23,8 @@ public:
 		vaccine_point = 0;	
 	};
 	~Vaccine();
-	void developement_progress(bool& developed);
-	void getVaccine(double& vaccine) { vaccine = developing_point; }
+	void do_operation();
+	void getVaccine const(double& current_point, double& speed);
 };
 
 #endif _OOP_proj__vaccine_
